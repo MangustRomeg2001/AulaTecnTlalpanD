@@ -1,97 +1,190 @@
 <!DOCTYPE html>
-<html lang="es">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" href="https://siitlalpan.appspot.com/images/tec/logoIt.png" type="image/png">
-    <title>AulaTecTlalpan</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-        }
-
-        header {
-            background-color: #333;
-            color: #fff;
-            padding: 20px;
-            text-align: center;
-        }
-
-        header h1 {
-            margin: 0;
-        }
-
-        nav ul {
-            list-style-type: none;
-            padding: 0;
-            display: flex;
-            justify-content: center;
-        }
-
-        nav ul li {
-            margin: 0 10px;
-        }
-
-        nav ul li a {
-            text-decoration: none;
-            color: #fff;
-        }
-
-        .main-section {
-            text-align: center;
-            padding: 50px;
-        }
-
-        p {
-            margin: 20px; /* Ajustado para espaciar un poco más el texto */
-            font-size: 120%; /* Reducido el tamaño del texto para dispositivos móviles */
-            text-align: justify;
-        }
-
-        .iframe-container {
-            position: relative;
-            max-width: 100%; /* El iframe no excederá el tamaño del contenedor padre */
-            margin: 0 auto; /* Centra el iframe */
-        }
-
-        footer {
-            background-color: #333;
-            color: #fff;
-            text-align: center;
-            padding: 10px;
-            position: fixed;
-            width: 100%;
-            bottom: 0;
-        }
-    </style>
+  <title>Registro de Datos de Salud</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+      background-color: #f5f5f5;
+    }
+    h1 {
+      text-align: center;
+      color: #333;
+    }
+    form {
+      margin-bottom: 20px;
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+    table {
+      border-collapse: collapse;
+      width: 100%;
+      margin-bottom: 20px;
+      background-color: #fff;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+    table, th, td {
+      border: 1px solid #ccc;
+    }
+    th, td {
+      padding: 8px;
+      text-align: left;
+    }
+    th {
+      background-color: #f2f2f2;
+    }
+    .delete-btn {
+      cursor: pointer;
+      color: red;
+      font-weight: bold;
+    }
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
+      border: none;
+      border-radius: 5px;
+      background-color: #4caf50;
+      color: white;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+    button:hover {
+      background-color: #45a049;
+    }
+  </style>
 </head>
 <body>
-    <br>
-    <header>
-        <h1>Bienvenido a AulaTecTlalpan</h1>
-        <nav>
-            
-        </nav>
-    </header>
-
-    <section>
-        <p>
-            El proyecto consiste en la creación de una plataforma de tutorías para el Instituto Tecnológico de Tlalpan. Esta plataforma tiene como objetivo proporcionar un espacio virtual donde estudiantes del instituto pueden recibir apoyo académico de tutores especializados en diversas materias. La plataforma facilitará la interacción entre tutores y estudiantes, permitiendo la programación de sesiones de tutoría y el intercambio de recursos educativos. El proyecto busca mejorar el rendimiento académico y la comprensión de los estudiantes, promoviendo un ambiente de aprendizaje colaborativo y personalizado.
-        </p>
-    </section>
+  <h1>Registro de Datos de Salud</h1>
+  
+  <form id="healthForm">
+    <label for="dateTime">Fecha y Hora:</label>
+    <input type="datetime-local" id="dateTime" required><br><br>
     
-    <br>
+    <label for="meal">Ayuno o Desayuno:</label>
+    <input type="radio" id="fasting" name="mealType" value="Ayuno">
+    <label for="fasting">Ayuno</label>
+    <input type="radio" id="breakfast" name="mealType" value="Desayuno">
+    <label for="breakfast">Desayuno</label><br><br>
     
-    <section>
-        <div>
-            <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSfOhyTwfHtf10A6UOMVzg63Z_LfLY5YEzZ-O5xB5arn5gxapw/viewform?embedded=true"  frameborder="0" marginheight="0" marginwidth="0">Cargando…</iframe>
-        </div>
-    </section>
+    <label for="glucose">Nivel de Glucosa:</label>
+    <input type="number" id="glucose" required><br><br>
+    
+    <label for="bloodPressure">Presión Arterial:</label><br>
+    <label for="diastolic">Diastólica:</label>
+    <input type="number" id="diastolic" required>
+    <label for="systolic">Sistólica:</label>
+    <input type="number" id="systolic" required>
+    <label for="pulse">Pulso:</label>
+    <input type="number" id="pulse" required><br><br>
+    
+    <label for="oxygen">Nivel de Oxigenación:</label>
+    <input type="number" id="oxygen" required><br><br>
+    
+    <button type="button" onclick="saveData()">Guardar</button>
+  </form>
 
-    <footer>
-        <p>&copy; 2023 AulaTecTlalpan Gracias.</p>
-    </footer>
+  <table id="data-table">
+    <thead>
+      <tr>
+        <th>Fecha y Hora</th>
+        <th>Ayuno o Desayuno</th>
+        <th>Glucosa</th>
+        <th>Presión Arterial (Diastólica)</th>
+        <th>Presión Arterial (Sistólica)</th>
+        <th>Pulso</th>
+        <th>Oxigenación</th>
+        <th>Acciones</th>
+      </tr>
+    </thead>
+    <tbody id="data-body"></tbody>
+  </table>
+    <br>
+    <br>
+  <button onclick="downloadCSV()">Descargar CSV</button>
+
+  <script>
+    function saveData() {
+      let dateTime = document.getElementById("dateTime").value;
+      let mealType = document.querySelector('input[name="mealType"]:checked').value;
+      let glucose = document.getElementById("glucose").value;
+      let diastolic = document.getElementById("diastolic").value;
+      let systolic = document.getElementById("systolic").value;
+      let pulse = document.getElementById("pulse").value;
+      let oxygen = document.getElementById("oxygen").value;
+
+      let healthData = {
+        "DateTime": dateTime,
+        "MealType": mealType,
+        "Glucose": glucose,
+        "Diastolic": diastolic,
+        "Systolic": systolic,
+        "Pulse": pulse,
+        "Oxygen": oxygen
+      };
+
+      let existingData = JSON.parse(localStorage.getItem("HealthRecords")) || [];
+      existingData.push(healthData);
+      localStorage.setItem("HealthRecords", JSON.stringify(existingData));
+      
+      displayData();
+    }
+
+    function displayData() {
+      let tableBody = document.getElementById("data-body");
+      tableBody.innerHTML = "";
+
+      let savedData = JSON.parse(localStorage.getItem("HealthRecords")) || [];
+      savedData.forEach((data, index) => {
+        let row = document.createElement("tr");
+        row.innerHTML = `
+          <td>${data.DateTime}</td>
+          <td>${data.MealType}</td>
+          <td>${data.Glucose}</td>
+          <td>${data.Diastolic}</td>
+          <td>${data.Systolic}</td>
+          <td>${data.Pulse}</td>
+          <td>${data.Oxygen}</td>
+          <td><span class="delete-btn" onclick="deleteEntry(${index})">Eliminar</span></td>
+        `;
+        tableBody.appendChild(row);
+      });
+    }
+
+    function deleteEntry(index) {
+      let savedData = JSON.parse(localStorage.getItem("HealthRecords")) || [];
+      savedData.splice(index, 1);
+      localStorage.setItem("HealthRecords", JSON.stringify(savedData));
+      displayData(); // Actualizar la tabla después de eliminar
+    }
+
+    function downloadCSV() {
+      let savedData = JSON.parse(localStorage.getItem("HealthRecords")) || [];
+      if (savedData.length === 0) {
+        alert("No hay datos para descargar.");
+        return;
+      }
+
+      let csvContent = "data:text/csv;charset=utf-8,"
+        + "DateTime,MealType,Glucose,Diastolic,Systolic,Pulse,Oxygen\n";
+
+      savedData.forEach(data => {
+        let row = Object.values(data).join(",");
+        csvContent += row + "\n";
+      });
+
+      let encodedURI = encodeURI(csvContent);
+      let link = document.createElement("a");
+      link.setAttribute("href", encodedURI);
+      link.setAttribute("download", "registros_de_salud.csv");
+      document.body.appendChild(link);
+      link.click();
+    }
+
+    window.onload = displayData; // Mostrar datos al cargar la página
+  </script>
 </body>
 </html>
