@@ -1,190 +1,110 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>Registro de Datos de Salud</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      margin: 20px;
-      background-color: #f5f5f5;
-    }
-    h1 {
-      text-align: center;
-      color: #333;
-    }
-    form {
-      margin-bottom: 20px;
-      background-color: #fff;
-      padding: 20px;
-      border-radius: 8px;
-      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    }
-    table {
-      border-collapse: collapse;
-      width: 100%;
-      margin-bottom: 20px;
-      background-color: #fff;
-      border-radius: 8px;
-      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    }
-    table, th, td {
-      border: 1px solid #ccc;
-    }
-    th, td {
-      padding: 8px;
-      text-align: left;
-    }
-    th {
-      background-color: #f2f2f2;
-    }
-    .delete-btn {
-      cursor: pointer;
-      color: red;
-      font-weight: bold;
-    }
-    button {
-      padding: 10px 20px;
-      font-size: 16px;
-      border: none;
-      border-radius: 5px;
-      background-color: #4caf50;
-      color: white;
-      cursor: pointer;
-      transition: background-color 0.3s ease;
-    }
-    button:hover {
-      background-color: #45a049;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora de Ingredientes de Pizza</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #1c1c1c;
+            color: #fff;
+            text-align: center;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: #2d2d2d;
+            padding: 20px;
+            border-radius: 10px;
+        }
+        h1 {
+            font-size: 24px;
+        }
+        .input-container {
+            margin: 20px 0;
+        }
+        input {
+            padding: 10px;
+            font-size: 18px;
+            width: 100px;
+            text-align: center;
+            border: none;
+            border-radius: 5px;
+        }
+        table {
+            width: 100%;
+            margin-top: 20px;
+            border-collapse: collapse;
+        }
+        th, td {
+            padding: 10px;
+            border: 1px solid #444;
+        }
+        th {
+            background-color: #3c8dbc;
+        }
+        .video {
+            margin-top: 20px;
+        }
+    </style>
 </head>
 <body>
-  <h1>Registro de Datos de Salud</h1>
-  
-  <form id="healthForm">
-    <label for="dateTime">Fecha y Hora:</label>
-    <input type="datetime-local" id="dateTime" required><br><br>
-    
-    <label for="meal">Ayuno o Desayuno:</label>
-    <input type="radio" id="fasting" name="mealType" value="Ayuno">
-    <label for="fasting">Ayuno</label>
-    <input type="radio" id="breakfast" name="mealType" value="Desayuno">
-    <label for="breakfast">Desayuno</label><br><br>
-    
-    <label for="glucose">Nivel de Glucosa:</label>
-    <input type="number" id="glucose" required><br><br>
-    
-    <label for="bloodPressure">Presión Arterial:</label><br>
-    <label for="diastolic">Diastólica:</label>
-    <input type="number" id="diastolic" required>
-    <label for="systolic">Sistólica:</label>
-    <input type="number" id="systolic" required>
-    <label for="pulse">Pulso:</label>
-    <input type="number" id="pulse" required><br><br>
-    
-    <label for="oxygen">Nivel de Oxigenación:</label>
-    <input type="number" id="oxygen" required><br><br>
-    
-    <button type="button" onclick="saveData()">Guardar</button>
-  </form>
-
-  <table id="data-table">
-    <thead>
-      <tr>
-        <th>Fecha y Hora</th>
-        <th>Ayuno o Desayuno</th>
-        <th>Glucosa</th>
-        <th>Presión Arterial (Diastólica)</th>
-        <th>Presión Arterial (Sistólica)</th>
-        <th>Pulso</th>
-        <th>Oxigenación</th>
-        <th>Acciones</th>
-      </tr>
-    </thead>
-    <tbody id="data-body"></tbody>
-  </table>
-    <br>
-    <br>
-  <button onclick="downloadCSV()">Descargar CSV</button>
-
-  <script>
-    function saveData() {
-      let dateTime = document.getElementById("dateTime").value;
-      let mealType = document.querySelector('input[name="mealType"]:checked').value;
-      let glucose = document.getElementById("glucose").value;
-      let diastolic = document.getElementById("diastolic").value;
-      let systolic = document.getElementById("systolic").value;
-      let pulse = document.getElementById("pulse").value;
-      let oxygen = document.getElementById("oxygen").value;
-
-      let healthData = {
-        "DateTime": dateTime,
-        "MealType": mealType,
-        "Glucose": glucose,
-        "Diastolic": diastolic,
-        "Systolic": systolic,
-        "Pulse": pulse,
-        "Oxygen": oxygen
-      };
-
-      let existingData = JSON.parse(localStorage.getItem("HealthRecords")) || [];
-      existingData.push(healthData);
-      localStorage.setItem("HealthRecords", JSON.stringify(existingData));
-      
-      displayData();
-    }
-
-    function displayData() {
-      let tableBody = document.getElementById("data-body");
-      tableBody.innerHTML = "";
-
-      let savedData = JSON.parse(localStorage.getItem("HealthRecords")) || [];
-      savedData.forEach((data, index) => {
-        let row = document.createElement("tr");
-        row.innerHTML = `
-          <td>${data.DateTime}</td>
-          <td>${data.MealType}</td>
-          <td>${data.Glucose}</td>
-          <td>${data.Diastolic}</td>
-          <td>${data.Systolic}</td>
-          <td>${data.Pulse}</td>
-          <td>${data.Oxygen}</td>
-          <td><span class="delete-btn" onclick="deleteEntry(${index})">Eliminar</span></td>
-        `;
-        tableBody.appendChild(row);
-      });
-    }
-
-    function deleteEntry(index) {
-      let savedData = JSON.parse(localStorage.getItem("HealthRecords")) || [];
-      savedData.splice(index, 1);
-      localStorage.setItem("HealthRecords", JSON.stringify(savedData));
-      displayData(); // Actualizar la tabla después de eliminar
-    }
-
-    function downloadCSV() {
-      let savedData = JSON.parse(localStorage.getItem("HealthRecords")) || [];
-      if (savedData.length === 0) {
-        alert("No hay datos para descargar.");
-        return;
-      }
-
-      let csvContent = "data:text/csv;charset=utf-8,"
-        + "DateTime,MealType,Glucose,Diastolic,Systolic,Pulse,Oxygen\n";
-
-      savedData.forEach(data => {
-        let row = Object.values(data).join(",");
-        csvContent += row + "\n";
-      });
-
-      let encodedURI = encodeURI(csvContent);
-      let link = document.createElement("a");
-      link.setAttribute("href", encodedURI);
-      link.setAttribute("download", "registros_de_salud.csv");
-      document.body.appendChild(link);
-      link.click();
-    }
-
-    window.onload = displayData; // Mostrar datos al cargar la página
-  </script>
+    <div class="container">
+        <h1>¿Cuántas pizzas harás?</h1>
+        <div class="input-container">
+            <input type="number" id="numPizzas" value="1" min="1" onchange="calculateIngredients()">
+        </div>
+        <table>
+            <thead>
+                <tr>
+                    <th>Ingrediente</th>
+                    <th>Cantidad</th>
+                </tr>
+            </thead>
+            <tbody id="ingredientsTable">
+                <tr>
+                    <td>Harina</td>
+                    <td id="flour">500 gramos</td>
+                </tr>
+                <tr>
+                    <td>Sal</td>
+                    <td id="salt">10 gramos</td>
+                </tr>
+                <tr>
+                    <td>Tradipan</td>
+                    <td id="yeast">1 sobre</td>
+                </tr>
+                <tr>
+                    <td>Azúcar</td>
+                    <td id="sugar">3 gramos</td>
+                </tr>
+                <tr>
+                    <td>Aceite de oliva</td>
+                    <td id="oil">40 gramos</td>
+                </tr>
+                <tr>
+                    <td>Agua</td>
+                    <td id="water">300 mililitros</td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="video">
+            <iframe width="100%" height="315" src="https://www.youtube.com/embed/8IzKaZR33nw" frameborder="0" allowfullscreen></iframe>
+        </div>
+    </div>
+    <script>
+        function calculateIngredients() {
+            const numPizzas = document.getElementById('numPizzas').value;
+            document.getElementById('flour').textContent = 500 * numPizzas + ' gramos';
+            document.getElementById('salt').textContent = 10 * numPizzas + ' gramos';
+            document.getElementById('yeast').textContent = numPizzas + ' sobre(s)';
+            document.getElementById('sugar').textContent = 3 * numPizzas + ' gramos';
+            document.getElementById('oil').textContent = 40 * numPizzas + ' gramos';
+            document.getElementById('water').textContent = 300 * numPizzas + ' mililitros';
+        }
+    </script>
 </body>
 </html>
