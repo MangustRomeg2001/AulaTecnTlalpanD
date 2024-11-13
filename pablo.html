@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cotización</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            font-size: 14px;
+            margin: 20px;
+            color: #333;
+        }
+        .container {
+            max-width: 800px;
+            margin: auto;
+            border: 1px solid #ddd;
+            padding: 20px;
+            background-color: #fff;
+        }
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .logo {
+            width: 150px;
+        }
+        .header-info {
+            text-align: right;
+            font-size: 12px;
+        }
+        .quote-title {
+            text-align: right;
+            font-weight: bold;
+            font-size: 16px;
+            margin-top: 10px;
+            color: #F26513;
+        }
+        .section {
+            margin-top: 20px;
+        }
+        .section-title {
+            font-weight: bold;
+            background-color: #f3f3f3;
+            padding: 5px;
+            border-bottom: 1px solid #ccc;
+            color: #F26513;
+        }
+        .flex-row {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 15px;
+        }
+        .flex-row p {
+            font-size: 13px;
+        }
+        .highlight {
+            color: #F26513;
+            font-weight: bold;
+        }
+        .terms {
+            background-color: #ffcc99;
+            padding: 10px;
+            font-size: 13px;
+            margin-top: 20px;
+        }
+        .table-container {
+            margin-top: 20px;
+            overflow-x: auto;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            border: 1px solid #ccc;
+            padding: 8px;
+            text-align: left;
+            font-size: 13px;
+        }
+        .footer {
+            margin-top: 20px;
+            font-size: 12px;
+            text-align: center;
+        }
+        .bank-info {
+            margin-top: 20px;
+        }
+        @media print {
+            body {
+                margin: 0;
+                -webkit-print-color-adjust: exact; /* Ensures colors print accurately */
+            }
+            .container {
+                border: none;
+                padding: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <div class="header">
+            <img src="logo.png" alt="Logo" class="logo">
+            <div class="header-info">
+                <p>CardMX</p>
+                <p>Calzada de Tlalpan 4253 - B, Col. Bosques de Tetlamaya, Coyoacán</p>
+                <p>México, D.F. 04730</p>
+                <p>Tel: [Número de Teléfono]</p>
+                <p>Email: [Correo]</p>
+            </div>
+        </div>
+        <p class="quote-title">PROPUESTA PROYECTO <br># [Folio]</p>
+
+        <!-- Contact & Date Info -->
+        <div class="section">
+            <div class="flex-row">
+                <div>
+                    <p><strong>[ReceptorNombre]</strong></p>
+                    <p>[ReceptorNombre]</p>
+                    <p>[Teléfono]</p>
+                    <p>[Correo Electrónico]</p>
+                </div>
+                <div>
+                    <p><strong>Fecha:</strong> [Fecha]</p>
+                    <p><strong>AC1</strong></p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Description Section -->
+        <div class="section">
+            <div class="section-title">Descripción o dimensiones</div>
+            <p>[Descripción completa de las tarjetas, materiales, y variables]</p>
+        </div>
+
+        <!-- Table Section -->
+        <div class="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Cantidad</th>
+                        <th>Precio Unitario</th>
+                        <th>Total sin IVA</th>
+                        <th>Divisa</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>[cantidad]</td>
+                        <td>[PrecioUnitario]</td>
+                        <td>[totalsiniva]</td>
+                        <td>[divisa]</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Delivery Information -->
+        <div class="section">
+            <div class="section-title">Entrega</div>
+            <p class="highlight">[Tiempodeentrega]</p>
+            <p>Si tiene alguna urgencia, favor de ponerse en contacto con nosotros.</p>
+        </div>
+
+        <!-- Terms Section -->
+        <div class="terms">
+            <p><strong>Términos:</strong></p>
+            <ul>
+                <li>Precios no incluyen IVA, válidos por 30 días. Inversión: 50% de anticipo y 50% antes de entregar.</li>
+                <li>Nuestros precios estarán vigentes mientras la materia prima o mano de obra no sufran incremento alguno.</li>
+                <li>En caso de cancelación de pedidos fincados, se aplicará una penalización del 10% sobre el valor del anticipo recibido.</li>
+            </ul>
+        </div>
+
+        <!-- Bank Info Section -->
+         <br>   
+        <div class="bank-details">
+            <h3>Datos Bancarios</h3>
+            <p><strong>Banco:</strong> HSBC </p>
+            <p><strong>A nombre de:</strong> Emoción Impresa S.A. de C.V.</p>
+            <p><strong>No. de cuenta:</strong> 4070610795</p>
+            <p><strong>Sucursal:</strong> 00584</p>
+            <p><strong>No. de plaza:</strong> 01</p>
+            <p><strong>CLABE interbancaria:</strong> 021180040706107959</p>
+        </div>
+
+        <!-- Footer -->
+        <div class="footer">
+            <p>*Datos fiscales de facturación. Nota: Todos los correos con copia al asesor para recibir en el correo.</p>
+        </div>
+    </div>
+</body>
+</html>

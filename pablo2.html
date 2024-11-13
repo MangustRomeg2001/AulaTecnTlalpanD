@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Confirmación de Producción</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #fff;
+            color: #333;
+            line-height: 1.5;
+        }
+        .container {
+            max-width: 800px;
+            margin: auto;
+            border: 1px solid #ddd;
+            padding: 20px;
+            background-color: #fff;
+        }
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 2px solid #F26513;
+            padding-bottom: 10px;
+            margin-bottom: 15px;
+        }
+        .logo {
+            width: 100px;
+        }
+        .header-info {
+            text-align: right;
+            font-size: 12px;
+        }
+        .title-section {
+            text-align: left;
+            margin-bottom: 10px;
+        }
+        .project-title {
+            font-size: 20px;
+            font-weight: bold;
+            color: #F26513;
+        }
+        .info-section {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 10px;
+            font-size: 14px;
+        }
+        .info-section div {
+            margin-bottom: 5px;
+        }
+        .message {
+            margin-top: 10px;
+            font-size: 14px;
+        }
+        .section-title {
+            font-weight: bold;
+            color: #F26513;
+            margin-top: 20px;
+            margin-bottom: 5px;
+        }
+        .details {
+            font-size: 14px;
+            margin-top: 5px;
+        }
+        .details p {
+            margin-bottom: 5px;
+        }
+        .flex-row {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 15px;
+        }
+        .highlight {
+            color: #F26513;
+            font-weight: bold;
+            text-align: center;
+            margin-top: 20px;
+            font-size: 16px;
+        }
+        .table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+            font-size: 14px;
+        }
+        .table th, .table td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        .table th {
+            background-color: #F26513;
+            color: #fff;
+        }
+        @media print {
+            body {
+                margin: 0;
+                -webkit-print-color-adjust: exact;
+            }
+            .container {
+                border: none;
+                padding: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header Section -->
+        <div class="header">
+            <img src="logo.png" alt="Logo" class="logo">
+            <div class="header-info">
+                <p>CardMX</p>
+                <p>Calzada de Tlalpan 4253</p>
+                <p>Bosques de Tetlamaya</p>
+                <p>Coyoacán, 04730</p>
+                <p>Tel: 55 5658 2953</p>
+                <p>Email: aclientes@cardmx.com</p>
+            </div>
+        </div>
+
+        <!-- Title Section -->
+        <div class="title-section">
+            <p class="project-title">Confirmación de Producción<br>Proyecto #[Folio]</p>
+        </div>
+
+        <!-- Info Section -->
+        <div class="info-section">
+            <div>
+                <p><strong>Fecha:</strong> [fecha]</p>
+                <p><strong>Pedido:</strong> [NumerodePedido]</p>
+            </div>
+            <div>
+                <p><strong>Cantidad:</strong>[cantidad]</p>
+            </div>
+        </div>
+
+        <!-- Message Section -->
+        <div class="message">
+            <p>Gracias por la confianza puesta en nosotros, esta es la confirmación de tu pedido. Revisa la siguiente información y si tienes alguna duda o quieres saber el estatus, por favor contáctame por este medio o teléfono.</p>
+        </div>
+
+        <!-- Product Details Section -->
+        <div class="section-title">Detalles del Producto</div>
+        <div class="details">
+            <p><strong>Título:</strong>[Titulodelpedido]</p>
+            <p><strong>Descripción:</strong>[caracterisiticas]</p>
+            <p><strong>Impresión:</strong>[tipodeimpresion]</p>
+            <p><strong>Materiales:</strong>[materiales]</p>
+            <p><strong>Dato variable:</strong>[datovariable]</p>
+        </div>
+
+        <!-- Finishes Section -->
+        <div class="section-title">Acabados</div>
+        <div class="flex-row">
+            <div>
+                <p><strong>Acabados al frente:</strong></p>
+                <p>Laminado: [tipolaminado]</p>
+                <p>Panel de escritura: [escritura]</p>
+                <p>Fondo metálico: [fmetalico]</p>
+                <p>Barniz UV: [barnizuv]</p>
+                <p>Estampado en caliente: [hotsamping]</p>
+            </div>
+            <div>
+                <p><strong>Acabados reverso:</strong></p>
+                <p>Laminado: [tipolaminado]</p>
+                <p>Panel de escritura: [panelescritura]</p>
+                <p>Fondo metálico: [fetalico]/p>
+                <p>Estampado en caliente: [hotstamping]</p>
+                <p>Banda magnética: [Bmagnetica]</p>
+            </div>
+        </div>
+
+        <!-- Delivery Date Section -->
+        <p class="highlight">Fecha Tentativa de Entrega: [fechatentativaentrega]</p>
+    </div>
+</body>
+</html>
