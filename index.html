@@ -1,110 +1,49 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Calculadora de Ingredientes de Pizza</title>
+    <title>Página con Botones</title>
     <style>
         body {
             font-family: Arial, sans-serif;
-            background-color: #1c1c1c;
-            color: #fff;
-            text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
             margin: 0;
-            padding: 20px;
+            background-color: #f9f9f9;
         }
         .container {
-            max-width: 600px;
-            margin: 0 auto;
-            background-color: #2d2d2d;
-            padding: 20px;
-            border-radius: 10px;
+            text-align: center;
         }
         h1 {
-            font-size: 24px;
+            color: #333;
+            margin-bottom: 20px;
         }
-        .input-container {
-            margin: 20px 0;
-        }
-        input {
-            padding: 10px;
-            font-size: 18px;
-            width: 100px;
-            text-align: center;
+        button {
+            background-color: #F26513;
+            color: white;
             border: none;
+            padding: 15px 30px;
+            font-size: 16px;
+            cursor: pointer;
+            margin: 10px;
             border-radius: 5px;
         }
-        table {
-            width: 100%;
-            margin-top: 20px;
-            border-collapse: collapse;
-        }
-        th, td {
-            padding: 10px;
-            border: 1px solid #444;
-        }
-        th {
-            background-color: #3c8dbc;
-        }
-        .video {
-            margin-top: 20px;
+        button:hover {
+            background-color: #e25410;
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <h1>¿Cuántas pizzas harás?</h1>
-        <div class="input-container">
-            <input type="number" id="numPizzas" value="1" min="1" onchange="calculateIngredients()">
-        </div>
-        <table>
-            <thead>
-                <tr>
-                    <th>Ingrediente</th>
-                    <th>Cantidad</th>
-                </tr>
-            </thead>
-            <tbody id="ingredientsTable">
-                <tr>
-                    <td>Harina</td>
-                    <td id="flour">500 gramos</td>
-                </tr>
-                <tr>
-                    <td>Sal</td>
-                    <td id="salt">10 gramos</td>
-                </tr>
-                <tr>
-                    <td>Tradipan</td>
-                    <td id="yeast">1 sobre</td>
-                </tr>
-                <tr>
-                    <td>Azúcar</td>
-                    <td id="sugar">3 gramos</td>
-                </tr>
-                <tr>
-                    <td>Aceite de oliva</td>
-                    <td id="oil">40 gramos</td>
-                </tr>
-                <tr>
-                    <td>Agua</td>
-                    <td id="water">300 mililitros</td>
-                </tr>
-            </tbody>
-        </table>
-        <div class="video">
-            <iframe width="100%" height="315" src="https://www.youtube.com/embed/8IzKaZR33nw" frameborder="0" allowfullscreen></iframe>
-        </div>
+        <h1>Bienvenido</h1>
+        <button onclick="window.location.href='pablo.html'">Ir a  CORREO Y PDF ADJUNTO Cotización PROYECTO con ajustes PABLO</button>
+        <button onclick="window.location.href='pablo2.html'">Ir a CORREO Confirmación de OP PROYECTO CON AJUSTES PABLO</button>
+        <button onclick="window.location.href='pablo3.html'">Ir a CORREO Archivo de Aprobación PROYECTO CON AJUSTES PABLO</button>
     </div>
-    <script>
-        function calculateIngredients() {
-            const numPizzas = document.getElementById('numPizzas').value;
-            document.getElementById('flour').textContent = 500 * numPizzas + ' gramos';
-            document.getElementById('salt').textContent = 10 * numPizzas + ' gramos';
-            document.getElementById('yeast').textContent = numPizzas + ' sobre(s)';
-            document.getElementById('sugar').textContent = 3 * numPizzas + ' gramos';
-            document.getElementById('oil').textContent = 40 * numPizzas + ' gramos';
-            document.getElementById('water').textContent = 300 * numPizzas + ' mililitros';
-        }
-    </script>
 </body>
 </html>
